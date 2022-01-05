@@ -3,414 +3,760 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Website Title -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Website Title -->
     <title>Rahul Otari - Software Developer</title>
     <!-- Bootstrap -->
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Font-Awesome -->
-    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-	<!-- Lightbox -->
-	<link href="assets/lightbox/css/lightbox.css" rel="stylesheet">
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font-Awesome -->
+    <link
+      href="assets/font-awesome/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <!-- Lightbox -->
+    <link href="assets/lightbox/css/lightbox.css" rel="stylesheet" />
     <!-- Text Rotator-->
-	<link href="assets/textrotator/simpletextrotator.css" rel="stylesheet">
-	<!-- FlexSlider -->
-    <link href="assets/flexslider/flexslider.css" rel="stylesheet">
-	<!-- Theme Style -->
-    <link href="css/style.css" rel="stylesheet">
-	<!-- Animations -->
-    <link href="css/animate.css" rel="stylesheet">
-	<!-- Custom Favicon -->
-	<link href="" rel="shortcut icon" type="" /> 
+    <link href="assets/textrotator/simpletextrotator.css" rel="stylesheet" />
+    <!-- FlexSlider -->
+    <link href="assets/flexslider/flexslider.css" rel="stylesheet" />
+    <!-- Theme Style -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Animations -->
+    <link href="css/animate.css" rel="stylesheet" />
+    <!-- Custom Favicon -->
+    <link href="" rel="shortcut icon" type="" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="assets/html5shiv/html5shiv.js"></script>
-    <script src="assets/respond/respond.min.js"></script>
+      <script src="assets/html5shiv/html5shiv.js"></script>
+      <script src="assets/respond/respond.min.js"></script>
     <![endif]-->
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Expletus+Sans);
+
+/* Basic resets */
+
+
+
+
+progress:not(value) {
+	/* Add your styles here. As part of this walkthrough we will focus only on determinate progress bars. */
+}
+
+/* Styling the determinate progress element */
+
+progress[value] {
+	/* Get rid of the default appearance */
+	appearance: none;
+	
+	/* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+	border: none;
+	
+	/* Add dimensions */
+	width: 50%; height: 20px;
+	
+	/* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+	  background-color: whiteSmoke;
+	  border-radius: 3px;
+	  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+	
+	/* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
+	color: royalblue;
+	
+	position: relative;
+	margin: 0 0 1.5em; 
+}
+
+/*
+Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
+-webkit-progress-bar -> To style the progress element container
+-webkit-progress-value -> To style the progress element value.
+*/
+
+progress[value]::-webkit-progress-bar {
+	background-color: whiteSmoke;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+	position: relative;
+	
+	background-size: 35px 20px, 100% 100%, 100% 100%;
+	border-radius:3px;
+	
+	/* Let's animate this */
+	animation: animate-stripes 5s linear infinite;
+}
+
+
+
+progress[value]::-webkit-progress-value:after {
+	/* Only webkit/blink browsers understand pseudo elements on pseudo classes. A rare phenomenon! */
+	content: '';
+	position: absolute;
+	
+	width:5px; height:5px;
+	top:7px; right:7px;
+	
+	background-color: white;
+	border-radius: 100%;
+}
+
+/* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+
+progress[value]::-moz-progress-bar {
+	/* Gradient background with Stripes */
+	background-image:
+	-moz-linear-gradient( 135deg,
+													 transparent,
+													 transparent 33%,
+													 rgba(0,0,0,.1) 33%,
+													 rgba(0,0,0,.1) 66%,
+													 transparent 66%),
+    -moz-linear-gradient( top,
+														rgba(255, 255, 255, .25),
+														rgba(0,0,0,.2)),
+     -moz-linear-gradient( left, #09c, #f44);
+	
+	background-size: 35px 20px, 100% 100%, 100% 100%;
+	border-radius:3px;
+	
+	/* Firefox doesn't support CSS3 keyframe animations on progress element. Hence, we did not include animate-stripes in this code block */
+}
+
+/* Fallback technique styles */
+.progress-bar {
+	background-color: whiteSmoke;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+
+	/* Dimensions should be similar to the parent progress element. */
+	width: 100%; height:20px;
+}
+
+.progress-bar span {
+	background-color: royalblue;
+	border-radius: 3px;
+	
+	display: block;
+	text-indent: -9999px;
+}
+
+p[data-value] { 
+  
+  position: relative; 
+  color: black;
+}
+
+/* The percentage will automatically fall in place as soon as we make the width fluid. Now making widths fluid. */
+
+p[data-value]:after {
+	content: attr(data-value) '%';
+	position: absolute; right:0;
+}
+
+
+
+
+
+.html5::-webkit-progress-value,
+.python::-webkit-progress-value  {
+	/* Gradient background with Stripes */
+	background-image:
+	-webkit-linear-gradient( 135deg,
+													 transparent,
+													 transparent 33%,
+													 rgba(0,0,0,.1) 33%,
+													 rgba(0,0,0,.1) 66%,
+													 transparent 66%),
+    -webkit-linear-gradient( top,
+														rgba(255, 255, 255, .25),
+														rgba(0,0,0,.2)),
+     -webkit-linear-gradient( left, #09c, #f44);
+}
+
+.css3::-webkit-progress-value,
+.php::-webkit-progress-value 
+{
+	/* Gradient background with Stripes */
+	background-image:
+	-webkit-linear-gradient( 135deg,
+													 transparent,
+													 transparent 33%,
+													 rgba(0,0,0,.1) 33%,
+													 rgba(0,0,0,.1) 66%,
+													 transparent 66%),
+    -webkit-linear-gradient( top,
+														rgba(255, 255, 255, .25),
+														rgba(0,0,0,.2)),
+     -webkit-linear-gradient( left, #09c, #ff0);
+}
+
+.jquery::-webkit-progress-value,
+.node-js::-webkit-progress-value 
+{
+	/* Gradient background with Stripes */
+	background-image:
+	-webkit-linear-gradient( 135deg,
+													 transparent,
+													 transparent 33%,
+													 rgba(0,0,0,.1) 33%,
+													 rgba(0,0,0,.1) 66%,
+													 transparent 66%),
+    -webkit-linear-gradient( top,
+														rgba(255, 255, 255, .25),
+														rgba(0,0,0,.2)),
+     -webkit-linear-gradient( left, #09c, #690);
+}
+
+/* Similarly, for Mozillaa. Unfortunately combining the styles for different browsers will break every other browser. Hence, we need a separate block. */
+
+.html5::-moz-progress-bar,
+.php::-moz-progress-bar {
+	/* Gradient background with Stripes */
+	background-image:
+	-moz-linear-gradient( 135deg,
+													 transparent,
+													 transparent 33%,
+													 rgba(0,0,0,.1) 33%,
+													 rgba(0,0,0,.1) 66%,
+													 transparent 66%),
+    -moz-linear-gradient( top,
+														rgba(255, 255, 255, .25),
+														rgba(0,0,0,.2)),
+     -moz-linear-gradient( left, #09c, #f44);
+}
+
+.css3::-moz-progress-bar,
+.php::-moz-progress-bar {
+{
+	/* Gradient background with Stripes */
+	background-image:
+	-moz-linear-gradient( 135deg,
+													 transparent,
+													 transparent 33%,
+													 rgba(0,0,0,.1) 33%,
+													 rgba(0,0,0,.1) 66%,
+													 transparent 66%),
+    -moz-linear-gradient( top,
+														rgba(255, 255, 255, .25),
+														rgba(0,0,0,.2)),
+     -moz-linear-gradient( left, #09c, #ff0);
+}
+
+.jquery::-moz-progress-bar,
+.node-js::-moz-progress-bar {
+	/* Gradient background with Stripes */
+	background-image:
+	-moz-linear-gradient( 135deg,
+													 transparent,
+													 transparent 33%,
+													 rgba(0,0,0,.1) 33%,
+													 rgba(0,0,0,.1) 66%,
+													 transparent 66%),
+    -moz-linear-gradient( top,
+														rgba(255, 255, 255, .25),
+														rgba(0,0,0,.2)),
+     -moz-linear-gradient( left, #09c, #690);
+}
+
+/* Now we are good to duplicate html code for other skills and then add the css code for the new skill based on data-skill */
+
+  
+/* THE END */
+    </style>
   </head>
-    <body id="top">
+  <body id="top">
+    <!-- ****************************** Preloader ************************** -->
+    <div id="preloader"></div>
 
-      <!-- ****************************** Preloader ************************** -->
-      <div id="preloader"></div>
-
-
-	  	<!-- ==========================
+    <!-- ==========================
         HEADER SECTION 
         =========================== -->
-        <header id="home">
-		    <!-- creative menu -->
-            <div class="container-fluid">
-              <div class="row">
-                <div class="menu-wrap">
-				<nav class="menu">
-				    <!-- Menu Links -->
-					<div class="icon-list">
-						<a href="index.html#home"><i class="fa-fa-github"></i><span>Home</span></a>
-						<a href="index.html#about"><i class="fa fa-fw fa-quote-left"></i><span>About</span></a>
-						<!-- <a href="index.html#service"><i class="fa fa-fw fa-globe"></i><span>Service</span></a> -->
-						<a href="index.html#portfolio"><i class="fa fa-fw fa-picture-o"></i><span>Project</span></a>
-						<a href="index.html#blog"><i class="fa fa-fw fa-rss"></i><span>My Hobbies</span></a>
-						<a href="index.html#contact"><i class="fa fa-fw fa-envelope-o"></i><span>Contact</span></a>
-					</div>
-				</nav>
-			    </div>
-			    <button class="menu-button" id="open-button"></button><!-- menu button -->
-              </div><!--/row-->
-            </div><!--/container-->
-		  <!-- Header Image -->
-          <section class="hero" id="hero">
-            <div class="container">
-			  <!-- Slider Button (don't edit!)-->
-              <div class="row">
-                <div class="col-md-12 text-right navicon">
-                  <a id="nav-toggle" class="nav_slide_button" href="index.html#"><span></span></a>
-                </div>
+    <header id="home">
+      <!-- creative menu -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="menu-wrap">
+            <nav class="menu">
+              <!-- Menu Links -->
+              <div class="icon-list">
+                <a href="index.html#home"
+                  ><i class="fa fa-fw fa-home"></i><span>Home</span></a
+                >
+                <a href="index.html#about"
+                  ><i class="fa fa-fw fa-quote-left"></i><span>About</span></a
+                >
+                <!-- <a href="index.html#service"><i class="fa fa-fw fa-globe"></i><span>Service</span></a> -->
+                <a href="index.html#project"
+                  ><i class="fa fa-fw fa-picture-o"></i><span>Project</span></a
+                >
+                <a href="index.html#blog"
+                  ><i class="fa fa-fw fa-rss"></i><span>My Hobbies</span></a
+                >
+                <a href="index.html#technical"
+                  ><i class="fa fa-fw fa-envelope-o"></i><span>Technical Skills</span></a
+                >
               </div>
-			  <!-- HEADER HEADLINE -->
-              <div class="row">
-                <div class="col-md-8 col-md-offset-1 inner">
-                  <h1 class="animated fadeInDown">
-                    R<span style="color:#E04343;">a</span>hul<br/>
-                    <span>O<span style="color:#FFE800">t</span>ari</span>
-                  </h1><!-- Title -->
-                  <h3 class="animated fadeInUp delay-05s"><span class="rotate">Software Developer</span></h3><!-- Text Rotator -->
-                </div>
-              </div>
-			  <!-- Learn More Button -->
-              <div class="row">
-                <div class="col-md-6 col-md-offset-3 text-center">
-                  <a href="index.html#about" class="scrollto wow fadeInUp delay-5s ">
-			            <p>SEE MORE</p>
-			            <p class="scrollto--arrow"><img src="img/scroll-down.png" alt="scroll down arrow"></p>
-			        </a>
-                </div>
-              </div>
+            </nav>
+          </div>
+          <button class="menu-button" id="open-button"></button
+          ><!-- menu button -->
+        </div>
+        <!--/row-->
+      </div>
+      <!--/container-->
+      <!-- Header Image -->
+      <section class="hero" id="hero">
+        <div class="container">
+          <!-- Slider Button (don't edit!)-->
+          <div class="row">
+            <div class="col-md-12 text-right navicon">
+              <a id="nav-toggle" class="nav_slide_button" href="index.html#"
+                ><span></span
+              ></a>
             </div>
-          </section>
-		  <!-- Header Image End -->
-        </header>
-		<!-- ==========================
+          </div>
+          <!-- HEADER HEADLINE -->
+          <div class="row">
+            <div class="col-md-8 col-md-offset-1 inner">
+              <h1 class="animated fadeInDown">
+                R<span style="color: #e04343">a</span>hul<br />
+                <span>O<span style="color: #ffe800">t</span>ari</span>
+              </h1>
+              <!-- Title -->
+              <h3 class="animated fadeInUp delay-05s">
+                <span class="rotate">Software Developer</span>
+              </h3>
+              <!-- Text Rotator -->
+            </div>
+          </div>
+          <!-- Learn More Button -->
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3 text-center">
+              <a href="index.html#about" class="scrollto wow fadeInUp delay-5s">
+                <p>SEE MORE</p>
+                <p class="scrollto--arrow">
+                  <img src="img/scroll-down.png" alt="scroll down arrow" />
+                </p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Header Image End -->
+    </header>
+    <!-- ==========================
         HEADER SECTION END  
         =========================== -->
-		
-		
-		
-		
-		<!-- ==========================
+
+    <!-- ==========================
         ABOUT SECTION  
         =========================== -->
-        <section class="intro text-center section-padding color-bg" id="about">
-          <div class="container">
-		    <!-- WELCOME TEXT -->
-            <div class="row">
-              <div class="col-md-8 col-md-offset-2 wp1">
-                <h1 class="arrow">A little <span>about</span> me</h1><!-- Headline -->
-				<!-- about / welcome text -->
-                <p>I am from Pune Maharashtra.
-                  I completed my masters in Computer Science from Dr.Arvid B.Telang Senior College,
-                  Camp Education Sociey,pune. 
-                  After Masters I have done some Internships in website designing using HTML,CSS and Bootstrap .
-                  I have total 6-8 month experience in Web designing.Done some technical courses in Core Java and 
-                  Advance Java also familiar with MySQL database. 
-                  C , C++ ,Java and Ruby these are some Programming languages that I familiar with.</p>
-              </div>
-            </div>
+    <section class="intro text-center section-padding color-bg" id="about">
+      <div class="container">
+        <!-- WELCOME TEXT -->
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 wp1">
+            <h1 class="arrow">A little <span>about</span> me</h1>
+            <!-- Headline -->
+            <!-- about / welcome text -->
+            <p>
+              I am from Pune Maharashtra. I completed my masters in Computer
+              Science from Dr.Arvid B.Telang Senior College, Camp Education
+              Sociey,pune. After Masters I have done some Internships in website
+              designing using HTML,CSS and Bootstrap . I have total 6-8 month
+              experience in Web designing.Done some technical courses in Core
+              Java and Advance Java also familiar with MySQL database. C , C++
+              ,Java and Ruby these are some Programming languages that I
+              familiar with.
+            </p>
           </div>
-        </section>
+        </div>
+      </div>
+    </section>
 
-
-
-			
-		<!-- ==========================
+    <!-- ==========================
         CUSTOM SPACER
         =========================== -->
-		<div class="spacer-cta text-center">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <a href="index.html#contact" class="outline-btn">hire rahul otari</a>
-              </div>
-            </div>
+    <div class="spacer-cta text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <!-- <a href="index.html#contact" class="outline-btn">hire rahul otari</a> -->
           </div>
-        </div>o
-		
-		
+        </div>
+      </div>
+    </div>
+    o
 
     <!-- ==========================
         BLOG SECTION 
         =========================== -->
     <section class="text-center section-padding" id="blog">
-          <div class="container">
+      <div class="container">
         <!-- Headline -->
         <div class="row">
-              <div class="col-md-12">
-                <h1 class="arrow">My <span>Hobbies</span></h1>
-              </div>
-            </div><br><br>
-      
-      <!-- Blog Slider -->
-            <div class="row">
-              <div id="blogSlider">
-                <ul class="slides">
-                  <li>
-            <!-- Blog Entry 1 -->
-                    <div class="col-md-4 wp4">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/blog1.jpg" class="grayscale" alt="Blog Item"><!-- Blog Image -->
-                        </div>
-                      </div>
-            <br>
-                      <h2>Cricket</h2><!-- Headline -->
-                      <p>My hobby is playing cricket. It makes me feel fresh and energetic. 
-                        I play it daily on weekends, with my friends in the playground, behind my house. 
-                        Playing outdoor games makes us physically fit.</p><!-- Description-->
-                    </div>
-          <!-- Blog Entry 2 -->
-                    <div class="col-md-4 wp4 delay-05s">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/blog2.jpg" class="grayscale" alt="Blog Item"><!-- Blog Image -->
-                        </div>
-                      </div>
-            <br>
-                      <h2>Snooker</h2><!-- Headline -->
-                      <p>In play, the object is to stroke the cue ball so that it hits the two object balls in succession, scoring a carom, or billiard, which counts one point. In a variety of the game called three-cushion billiards, the cue ball must also touch a cushion or cushions three or more times to complete a carom.</p><!-- Description -->
-                    </div>
-          <!-- Blog Entry 3 -->
-                    <div class="col-md-4 wp4 delay-1s">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/blog3.jpg"  class="grayscale" alt="Blog Item"><!-- Blog Image -->
-                        </div>
-                      </div>
-            <br>
-                      <h2>Reading</h2><!-- Headline -->
-                      <p>Reading causes your mind to work differently than when you are watching television. It is a way to stretch your mind to grasp new concepts. It also makes your mind work to interpret images. It is healthy for your brain and keeps your brain functioning actively. This can help keep your mentality sharp as you age.</p><!-- Description-->
-                    </div>
-                  </li>
-                
-                </ul>
-              </div>
-            </div>
+          <div class="col-md-12">
+            <h1 class="arrow">My <span>Hobbies</span></h1>
           </div>
-        </section>
+        </div>
+        <br /><br />
+
+        <!-- Blog Slider -->
+        <div class="row">
+          <div id="blogSlider">
+            <ul class="slides">
+              <li>
+                <!-- Blog Entry 1 -->
+                <div class="col-md-4 wp4">
+                  <div class="overlay-effect effects clearfix">
+                    <div class="img">
+                      <img
+                        src="img/blog1.jpg"
+                        class="grayscale"
+                        alt="Blog Item"
+                      /><!-- Blog Image -->
+                    </div>
+                  </div>
+                  <br />
+                  <h2>Cricket</h2>
+                  <!-- Headline -->
+                  <p>
+                    My hobby is playing cricket. It makes me feel fresh and
+                    energetic. I play it daily on weekends, with my friends in
+                    the playground, behind my house. Playing outdoor games makes
+                    us physically fit.
+                  </p>
+                  <!-- Description-->
+                </div>
+                <!-- Blog Entry 2 -->
+                <div class="col-md-4 wp4 delay-05s">
+                  <div class="overlay-effect effects clearfix">
+                    <div class="img">
+                      <img
+                        src="img/blog2.jpg"
+                        class="grayscale"
+                        alt="Blog Item"
+                      /><!-- Blog Image -->
+                    </div>
+                  </div>
+                  <br />
+                  <h2>Snooker</h2>
+                  <!-- Headline -->
+                  <p>
+                    In play, the object is to stroke the cue ball so that it
+                    hits the two object balls in succession, scoring a carom, or
+                    billiard, which counts one point. In a variety of the game
+                    called three-cushion billiards, the cue ball must also touch
+                    a cushion or cushions three or more times to complete a
+                    carom.
+                  </p>
+                  <!-- Description -->
+                </div>
+                <!-- Blog Entry 3 -->
+                <div class="col-md-4 wp4 delay-1s">
+                  <div class="overlay-effect effects clearfix">
+                    <div class="img">
+                      <img
+                        src="img/blog3.jpg"
+                        class="grayscale"
+                        alt="Blog Item"
+                      /><!-- Blog Image -->
+                    </div>
+                  </div>
+                  <br />
+                  <h2>Reading</h2>
+                  <!-- Headline -->
+                  <p>
+                    Reading causes your mind to work differently than when you
+                    are watching television. It is a way to stretch your mind to
+                    grasp new concepts. It also makes your mind work to
+                    interpret images. It is healthy for your brain and keeps
+                    your brain functioning actively. This can help keep your
+                    mentality sharp as you age.
+                  </p>
+                  <!-- Description-->
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- ==========================
         BLOG SECTION END
         =========================== -->
-        <section class="text-center section-padding" id="blog">
-          <div class="container">
+    <section class="text-center section-padding" id="project">
+      <div class="container">
         <!-- Headline -->
         <div class="row">
-              <div class="col-md-12">
-                <h1 class="arrow">My <span>Projects</span></h1>
-              </div>
-            </div><br><br>
-      
-      <!-- Blog Slider -->
-            <div class="row">
-              <div id="blogSlider">
-                <ul class="slides">
-                  <li>
-            <!-- Blog Entry 1 -->
-                    <div class="col-md-4 wp4">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/blog4.jpg" class="grayscale" alt="Blog Item"><!-- Blog Image -->
-                        </div>
-                      </div>
-            <br>
-                      <h2>Grocery Management System</h2><!-- Headline -->
-                      <p>The main objective of this module is provide all the functionality related to supplier.
-                        It tracks all the information and details of the supplier.We have developed all type of 
-                        CRUD(Create,Read,Update,Delete)operations of the suppiler.This is a role based module
-                        where admin can perform each and every operation on data but the suppiler will be able to view
-                        only his/her data,so access level restrictions has also been implemented on the project.</p><!-- Description-->
-                    </div>
-          <!-- Blog Entry 2 -->
-                    <div class="col-md-4 wp4 delay-05s">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/blog4.jpg" class="grayscale" alt="Blog Item"><!-- Blog Image -->
-                        </div>
-                      </div>
-            <br>
-                      <h2>Grocery Management System</h2><!-- Headline -->
-                      <p>The main objective of this module is provide all the functionality related to supplier.
-                        It tracks all the information and details of the supplier.We have developed all type of 
-                        CRUD(Create,Read,Update,Delete)operations of the suppiler.This is a role based module
-                        where admin can perform each and every operation on data but the suppiler will be able to view
-                        only his/her data,so access level restrictions has also been implemented on the project.</p><!-- Description -->
-                    </div>
-          <!-- Blog Entry 3 -->
-                    <div class="col-md-4 wp4 delay-1s">
-                      <div class="overlay-effect effects clearfix">
-                        <div class="img">
-                          <img src="img/blog4.jpg"  class="grayscale" alt="Blog Item"><!-- Blog Image -->
-                        </div>
-                      </div>
-            <br>
-                      <h2>Grocery Management System</h2><!-- Headline -->
-                      <p>The main objective of this module is provide all the functionality related to supplier.
-                        It tracks all the information and details of the supplier.We have developed all type of 
-                        CRUD(Create,Read,Update,Delete)operations of the suppiler.This is a role based module
-                        where admin can perform each and every operation on data but the suppiler will be able to view
-                        only his/her data,so access level restrictions has also been implemented on the project.
-                      </p><!-- Description-->
-                    </div>
-                  </li>
-                
-                </ul>
-              </div>
-            </div>
+          <div class="col-md-12">
+            <h1 class="arrow">My <span>Projects</span></h1>
           </div>
-        </section>
-      
-          
+        </div>
+        <br /><br />
 
+        <!-- Blog Slider -->
+        <div class="row">
+          <div id="blogSlider">
+            <ul class="slides">
+              <li>
+                <!-- Blog Entry 1 -->
+                <div class="col-md-4 wp4">
+                  <div class="overlay-effect effects clearfix">
+                    <div class="img">
+                      <img
+                        src="img/blog4.jpg"
+                        class="grayscale"
+                        alt="Blog Item"
+                      /><!-- Blog Image -->
+                    </div>
+                  </div>
+                  <br />
+                  <h2>Grocery Management System</h2>
+                  <!-- Headline -->
+                  <p>
+                    The main objective of this module is provide all the
+                    functionality related to supplier. It tracks all the
+                    information and details of the supplier.We have developed
+                    all type of CRUD(Create,Read,Update,Delete)operations of the
+                    suppiler.This is a role based module where admin can perform
+                    each and every operation on data but the suppiler will be
+                    able to view only his/her data,so access level restrictions
+                    has also been implemented on the project.
+                  </p>
+                  <!-- Description-->
+                </div>
+                <!-- Blog Entry 2 -->
+                <div class="col-md-4 wp4 delay-05s">
+                  <div class="overlay-effect effects clearfix">
+                    <div class="img">
+                      <img
+                        src="img/college1.jpeg"
+                        class="grayscale"
+                        alt="Blog Item"
+                      /><!-- Blog Image -->
+                    </div>
+                  </div>
+                  <br />
+                  <h2>College Alumini site</h2>
+                  <!-- Headline -->
+                  <p>
+                    The college alumini website is an application that will
+                    allow the college management to store the details of the olf
+                    and new students of the college. It also allows them to
+                    communicate with each other. The details related to the job
+                    vacancies,career,subject details can be asked by the new
+                    students from the old students. Manually collecting the
+                    student's data and storing it through some pen paper method
+                    is a tedious job. There is no security for the data that is
+                    stored through such method.
+                  </p>
+                  <!-- Description -->
+                </div>
+                <!-- Blog Entry 3 -->
+                <div class="col-md-4 wp4 delay-1s">
+                  <div class="overlay-effect effects clearfix">
+                    <div class="img">
+                      <img
+                        src="img/cake.jpeg"
+                        class="grayscale"
+                        alt="Blog Item"
+                      /><!-- Blog Image -->
+                    </div>
+                  </div>
+                  <br />
+                  <h2>Online Cake Booking</h2>
+                  <!-- Headline -->
+                  <p>
+                    Online Cake Booking System is one of the most innovative
+                    ideas of this era. It will make a person’s life easier in a
+                    dramatic way. If a person wishes to buy a cake, that person
+                    just has to go to this system, select the cake, provide some
+                    important information and make the payment and BAM! the cake
+                    would be at their doorstep or any person can collect it all
+                    by themselves from the shopr
+                  </p>
+                  <!-- Description-->
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+<section class="text-center section-padding" id="technical">
+
+     <div class="row">
+          <div class="col-md-12">
+            <h1 class="arrow">Technical<span>Skills</span></h1>
+          </div>
+        </div>
+
+<ul>
+	<li>
+		<!-- <h2>Frontend</h2> -->
 		
+		<!-- HTML5 -->
+    <p style="width:60%" data-value="40">HTML5</p>
+		<progress max="100" value="40" class="html5">
+			<!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+			<div class="progress-bar">
+				<span style="width: 60%">40%</span>
+			</div>
+		</progress>
 		
-		<!-- ==========================
+		<!-- CSS3 -->
+    <p style="width:60%" data-value="30">CSS3</p>
+		<progress max="100" value="30" class="css3">
+			<!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+			<div class="progress-bar">
+				<span style="width: 60%">30%</span>
+			</div>
+		</progress>
+		
+		<!-- jQuery -->
+    <p style="width:60%" data-value="20">jQuery</p>
+		<progress max="100" value="20" class="jquery">
+			<!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+			<div class="progress-bar">
+				<span style="width: 50%">20%</span>
+			</div>
+		</progress>
+		
+	</li>
+	<li>
+		<!-- <h2>Backend</h2> -->
+		
+    <!-- Python -->
+    <p style="width:60%" data-value="30">Ruby</p>
+		<progress max="100" value="30" class="python">
+			<!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+			<div class="progress-bar">
+				<span style="width: 60%">30%</span>
+			</div>
+		</progress>
+		
+		<!-- PHP -->
+    <p style="width:60%" data-value="40">PHP</p>
+		<progress max="100" value="40" class="php">
+			<!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+			<div class="progress-bar">
+				<span style="width: 60%">40%</span>
+			</div>
+		</progress>
+		
+		<!-- Node.js -->
+    <p style="width:60%" data-value="45">java</p>
+    <progress max="100" value="45" class="node-js">
+			<!-- Browsers that support HTML5 progress element will ignore the html inside `progress` element. Whereas older browsers will ignore the `progress` element and instead render the html inside it. -->
+			<div class="progress-bar">
+				<span style="width: 60%">45%</span>
+			</div>
+		</progress>		
+		
+	</li>
+</ul>
+
+
+</section>
+
+    <!-- ==========================
         CONTACT SECTION
         =========================== -->
-        <section class="text-center section-padding contact-wrap" id="contact">
-		  <!-- To Top Button -->
-          <a href="index.html#top" class="up-btn"><i class="fa fa-chevron-up"></i></a>
-          <div class="container">
-		    <!-- Headline -->
-            <div class="row">
-              <div class="col-md-12">
-                <h1 class="arrow">Drop <span>me</span> a line</h1>
-              </div>
-            </div>
-            <div class="row contact-details">
-			  <!-- Adress Box -->
-              <div class="col-md-4">
-                <div class="dark-box box-hover">
-                  <h2><i class="fa fa-map-marker"></i><span>Address</span></h2>
-                  <p>Hanuman Colony,Vikas Nagar,Dehuroad-412012,Pune-Maharashtra</p>
-                </div>
-              </div>
-			  <!-- Phone Number Box -->
-              <div class="col-md-4">
-                <div class="dark-box box-hover">
-                  <h2><i class="fa fa-mobile"></i><span>Phone</span></h2>
-                  <p>+91 7249674500</p>
-                </div>
-              </div>
-			  <!-- E-Mail Box -->
-              <div class="col-md-4">
-                <div class="dark-box box-hover">
-                  <h2><i class="fa fa-paper-plane"></i><span>Email</span></h2>
-                  <p><a href="index.html#">rahulotari2393@gmail.com</a></p>
-                </div>
-              </div>
-            </div>
-			<div class="row">
-			  <!-- Google Maps (Change your Settings below) -->
-			  <div class="col-md-6">
-			    <div id="googlemaps"></div>
-			  </div>
-			  <!-- Contact Form -->
-			  <div class="col-md-6 contact">
-			     <form role="form">
-				            <!-- Name -->
-                            <div class="row">
-                                <div class="col-md-6">
-								    <!-- E-Mail -->
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-								    <!-- Phone Number -->
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Email address">
-                                    </div>
-                                </div>
-                            </div>
-							<!-- Message Area -->
-                            <div class="form-group">
-                                <textarea class="form-control" placeholder="Write you message here..." style="height:232px;"></textarea>
-                            </div>
-							<!-- Subtmit Button -->
-                            <button type="submit" class="btn btn-send">
-                                Send message
-                            </button>
-                        </form>
-			  </div>
-			</div>
-			<br>
-			<!-- Social Buttons - use font-awesome, past in what you want -->
-            <div class="row">
-              <div class="col-md-12">
-                <ul class="social-buttons">
-                  <li><a href="https://github.com/RahulOtari1993" class="social-btn"><i class="fa fa-github"></i></a></li><!-- dribble -->
-                  <li><a href="https://www.linkedin.com/in/rahul-otari-00026b152/" class="social-btn"><i class="fa fa-linkedin"></i></a></li><!-- twitter -->
-                   </ul>
-              </div>
-            </div>
+    <section class="text-center section-padding contact-wrap" id="contact">
+      
+          
+    
+        <br /> 
+        <!-- Social Buttons - use font-awesome, past in what you want -->
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="social-buttons">
+              <li>
+                <a href="https://github.com/RahulOtari1993" class="social-btn"
+                  ><i class="fa fa-github"></i
+                ></a>
+              </li>
+              <!-- dribble -->
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/rahul-otari-00026b152/"
+                  class="social-btn"
+                  ><i class="fa fa-linkedin"></i
+                ></a>
+              </li>
+              <!-- twitter -->
+            </ul>
           </div>
-        </section>
-		<!-- ==========================
+        </div>
+      </div>
+    </section>
+    <!-- ==========================
         CONTACT SECTION END
         =========================== -->
-		
-		
-		
-		<!-- ==========================
+
+    <!-- ==========================
         FOOTER SECTION
         =========================== -->
-        <footer>
-          <div class="container">
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <p>Portfolio 2022 <a href="http://www.themewagon.com">RahulOtari1993</a>
-              </div>
-            </div>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p>
+              Portfolio 2022
+              <a href="http://www.themewagon.com">RahulOtari1993</a>
+            </p>
           </div>
-        </footer>
-		<!-- ==========================
+        </div>
+      </div>
+    </footer>
+    <!-- ==========================
         FOOTER SECTION END
-        =========================== -->		
-		
-		
+        =========================== -->
+
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <!-- SmoothScroll -->           
-    <script type="text/javascript" src="assets/smoothscroll/smoothscroll.js"></script>
+    <!-- SmoothScroll -->
+    <script
+      type="text/javascript"
+      src="assets/smoothscroll/smoothscroll.js"
+    ></script>
     <!-- Bootstrap -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/waypoints.min.js"></script>
+    <!-- Waypoints -->
+    <script src="js/waypoints.min.js"></script>
     <!-- classie.js -->
-	<script src="js/classie.js"></script>
+    <script src="js/classie.js"></script>
     <!-- FlexSlider -->
     <script src="assets/flexslider/jquery.flexslider.js"></script>
-	<!-- Modernizr -->
+    <!-- Modernizr -->
     <script src="js/modernizr.js"></script>
-	<!-- Text Rotator -->
-	<script src="assets/textrotator/jquery.simple-text-rotator.js"></script>
-	<!-- Lightbox.js -->
+    <!-- Text Rotator -->
+    <script src="assets/textrotator/jquery.simple-text-rotator.js"></script>
+    <!-- Lightbox.js -->
     <script src="assets/lightbox/js/lightbox.min.js"></script>
-    <!-- Google Maps --> 
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeKBBPJTG3v5w3cNPAgM6ZsJiPyL1mP_o&amp;sensor=false"></script>
-	<!-- Theme JavaScript Core -->
-	<script src="js/main.js"></script>
-	<script src="js/script.js"></script>
+    <!-- Google Maps -->
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeKBBPJTG3v5w3cNPAgM6ZsJiPyL1mP_o&amp;sensor=false"
+    ></script>
+    <!-- Theme JavaScript Core -->
+    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
 
-	
-	<!-- TEXT ROTATOR SETTINGS -->
+    <!-- TEXT ROTATOR SETTINGS -->
     <script type="text/javascript">
-    $(".rotate").textrotator({
-      animation: "fade", // You can pick the way it animates when rotating through words. Options are dissolve (default), fade, flip, flipUp, flipCube, flipCubeUp and spin.
-      separator: ",", // If you don't want commas to be the separator, you can define a new separator (|, &, * etc.) by yourself using this field.
-      speed: 2000 // How many milliseconds until the next word show.
-    });
+      $(".rotate").textrotator({
+        animation: "fade", // You can pick the way it animates when rotating through words. Options are dissolve (default), fade, flip, flipUp, flipCube, flipCubeUp and spin.
+        separator: ",", // If you don't want commas to be the separator, you can define a new separator (|, &, * etc.) by yourself using this field.
+        speed: 2000, // How many milliseconds until the next word show.
+      });
     </script>
-	
-    </body>
+  </body>
 </html>
